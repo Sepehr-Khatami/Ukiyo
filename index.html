@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>پیدامون کردی!</title>
+  <link rel="icon" href="logo.png" type="image/png" />
+
+  <!-- Bootstrap & Fonts -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Vazir:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+  <style>
+    .map-container {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .map-container iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container d-flex justify-content-center align-items-center min-vh-100 flex-column">
+    <div class="card text-center shadow-lg animate-entry">
+      <img src="logo.png" alt="Logo" class="logo mb-4" />
+      <h1 class="mb-3">اینجا همه برنده میشن 🎉</h1>
+
+      <p class="message mb-4">
+        از جایزه اسکرین شات بگیر به ما نشون بده 📸✨
+      </p>
+
+      <!-- Added aria-label for accessibility -->
+      <button id="revealBtn" class="btn btn-success w-100 mb-3" aria-label="Reveal your prize">🎁 جایزه رو باز کن</button>
+
+      <div id="prizeContainer" class="prize-container" style="display:none;">
+        <p id="prizeText" class="prize-text"></p>
+        <p id="uniqueCode" class="unique-code"></p>
+      </div>
+
+      <p class="location-text mb-3">ما اینجاییم 👇</p>
+
+      <!-- Map container with border -->
+      <div class="map-container">
+        <!-- Added title for accessibility -->
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3200.272862641584!2d48.51693014682511!3d36.66793991928226!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ff61100070ea101%3A0x72c61896a55b8e50!2z2qnYp9mB2Ycg24zZiNqp24zZiCAtIFVraXlvIENhZmU!5e0!3m2!1sen!2sde!4v1746083373350!5m2!1sen!2sde" 
+          title="Location of Ukiyo Cafe" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+
+      <a href="https://www.instagram.com/ukiyocafe.ir" target="_blank" class="btn btn-secondary w-100">📸 یوکیو در اینستاگرام</a>
+    </div>
+  </div>
+
+  <!-- FingerprintJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs@3.3.0/dist/fp.min.js"></script>
+
+  <script>
+    const revealBtn = document.getElementById('revealBtn');
+    const prizeText = document.getElementById('prizeText');
+    const uniqueCode = document.getElementById('uniqueCode');
+    const prizeContainer = document.getElementById('prizeContainer');
+
+    // Initialize FingerprintJS
+    async function getFingerprint() {
+      try {
+        const fp = await FingerprintJS.load();
+        const result = await fp.get();
+        return result.visitorId;
+      } catch (err) {
+        console.error("FingerprintJS failed:", err);
+        throw new Error("FingerprintJS failed");
+      }
+    }
+
+    // Handle prize reveal action
+    async function handleRevealPrize() {
+      revealBtn.disabled = true;
+      let userId;
+
+      try {
+        // Check if user_id is already stored in localStorage
+        userId = localStorage.getItem('user_id');
+        if (!userId) {
+          // Generate a new user_id using FingerprintJS
+          userId = await getFingerprint();
+          localStorage.setItem('user_id', userId); // Store user_id in localStorage
+        }
+        console.log("✅ Visitor ID:", userId); // Log visitor ID
+      } catch {
+        alert("⚠️ خطا در دریافت شناسه دستگاه.");
+        revealBtn.disabled = false;
+        return;
+      }
+
+      try {
+        const response = await fetch('/.netlify/functions/handleprize', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ user_id: userId }),
+        });
+
+        if (!response.ok) {
+          const errorData = await response.json().catch(() => ({}));
+          throw new Error(errorData.message || "خطا در دریافت جایزه.");
+        }
+
+        const data = await response.json();
+        prizeText.innerText = data.prize;
+        uniqueCode.innerText = `کد شما: ${data.unique_code}`;
+        prizeContainer.style.display = 'block';
+
+        confetti({
+          particleCount: 120,
+          spread: 70,
+          origin: { y: 0.6 },
+        });
+      } catch (err) {
+        console.error("🔻 API call failed:", err);
+        alert("مشکلی پیش آمده، لطفاً دوباره امتحان کن.");
+      } finally {
+        revealBtn.disabled = false;
+      }
+    }
+
+    // Event listener for prize reveal button
+    revealBtn.addEventListener('click', handleRevealPrize);
+  </script>
+</body>
+</html>

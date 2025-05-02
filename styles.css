@@ -1,0 +1,174 @@
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Vazir', sans-serif;
+  background: linear-gradient(135deg, #D0C9FF, #F9F9FF); /* Soft gradient background */
+  color: #333;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto; /* Allow vertical scrolling */
+}
+
+.container {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  justify-content: flex-start; /* Align items to the top */
+  padding: 40px 20px; /* Add padding to ensure space around the content */
+  box-sizing: border-box;
+}
+
+.card {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 15px;
+  background-color: #fff;
+  padding: 30px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin: 0 auto; /* Center the card horizontally */
+  margin-top: 20px; /* Add space between the card and the top of the container */
+}
+
+.logo {
+  width: 80%;
+  max-width: 250px;
+  height: auto;
+  margin: 0 auto 20px auto; /* Add space below the logo */
+}
+
+h1 {
+  font-size: 2rem;
+  color: #4B4B4B; /* Dark gray text for the heading */
+  font-weight: bold;
+  line-height: 1.4;
+  margin: 20px 0;
+}
+
+.message {
+  font-size: 1.2rem;
+  color: #5C5C5C; /* Slightly lighter gray for message text */
+  margin: 20px 0;
+  line-height: 1.5;
+}
+
+.image-container {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  margin: 20px 0;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #F5F5F5; /* Subtle light gray background for the image container */
+}
+
+.random-image {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.location-text {
+  font-size: 1.4rem;
+  color: #3C3C3C; /* Dark gray for location text */
+  margin-bottom: 20px;
+}
+
+.btn {
+  padding: 12px 20px;
+  font-size: 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: #4CAF50; /* Green color for Google Maps button */
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #45a049; /* Slight darkening effect on hover */
+}
+
+.btn-secondary {
+  background-color: #3f8ca3; /* Soft blue for Instagram button */
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #355f7e; /* Slight darkening effect on hover */
+}
+
+.location-text {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  margin-top: 20px;
+}
+
+/* Prize reveal section */
+.prize-container {
+  border: 2px solid #28a745; /* Green border around prize section */
+  padding: 15px;
+  margin-top: 20px;
+  display: none;
+  text-align: center;
+  border-radius: 10px;
+  background-color: #f8f9fa;
+}
+
+.prize-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #28a745;
+}
+
+.unique-code {
+  font-size: 0.85rem;
+  color: #6c757d;
+  margin-top: 10px;
+}
+
+.map-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 300px;
+  border: none;
+}
+
+@media (max-width: 576px) {
+  /* Adjustments for small devices */
+  .card {
+    padding: 20px;
+  }
+
+  .btn {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
