@@ -10,7 +10,7 @@ html, body {
 }
 
 body {
-  font-family: 'Vazir', sans-serif;
+  font-family: 'Vazir';
   background: linear-gradient(135deg, #6caa3f, #F9F9FF); /* Soft gradient background */
   background-size: 100vw 100vh;
   background-repeat: no-repeat;
@@ -33,7 +33,7 @@ body {
   width: 100%;
   max-width: 600px;
   border-radius: 15px;
-  background-color: #d2ffba;
+  background-color: #ecffe2;
   padding: 30px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
   text-align: center;
