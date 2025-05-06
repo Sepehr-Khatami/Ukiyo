@@ -121,7 +121,8 @@
 
         const data = await response.json();
         prizeText.innerText = data.prize;
-        uniqueCode.innerText = `کد شما: ${data.unique_code}`;
+        uniqueCode.innerHTML = `کد شما: ${data.unique_code}<br>این کد هفت روز اعتبار داره`;
+        //uniqueCode.innerText = `کد شما: ${data.unique_code}`;
         prizeContainer.style.display = 'block';
 
         confetti({
