@@ -61,8 +61,8 @@ exports.handler = async (event) => {
 
     // Randomly select a prize
     const selectedPrize = prizes[Math.floor(Math.random() * prizes.length)];
-    const uniqueCode = `UKIYO-${user_id.slice(0, 8)}-${Date.now().toString().slice(-4)}`;
-
+    const uniqueCode = `UKIYO-${user_id.slice(0, 8)}`;
+    //-${Date.now().toString().slice(-4)}
     // Insert the new prize claim
     const { error: insertError } = await supabase
       .from('claims')
