@@ -175,3 +175,27 @@ h1 {
     padding-right: 10px;
   }
 }
+.mb-3{
+  font-size: min(30px,6vw) ;
+  /* font-size: 2rem; */
+}
+h1{
+  font-size: min(60px,8vw) ;
+  text-wrap-mode: nowrap;
+  /* font-size: 7vw; */
+  margin-bottom: 10px;
+}
+.mb-4{
+  font-weight: 500;
+  /* font-size: 1.5rem; */
+  font-size: min(25px,4.6vw) ;
+  /* margin-bottom: 500px; */
+  margin-top: 10px;
+}
+.btn-secondary{
+  margin-top: 10px;
+  font-size: min(30px,6vw) ;
+}
+.logo{
+  margin: 0 auto;
+}
