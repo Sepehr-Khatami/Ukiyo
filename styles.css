@@ -199,3 +199,10 @@ h1{
 .logo{
   margin: 0 auto;
 }
+.location-manual{
+  
+  border: 2px solid green;
+  border-radius: 8px;
+  margin-bottom: 5px;
+  padding: 5px;
+}
