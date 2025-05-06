@@ -108,7 +108,7 @@
       }
 
       try {
-        const response = await fetch('/.netlify/functions/handleprizev2', {
+        const response = await fetch('/.netlify/functions/handleprize', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ user_id: userId }),
