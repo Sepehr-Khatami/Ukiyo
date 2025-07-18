@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 /* Global Reset */
 * {
   margin: 0;
@@ -5,13 +7,18 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
 body {
-  font-family: 'Vazir';
-  background: linear-gradient(135deg, #6caa3f, #F9F9FF); /* Soft gradient background */
+  font-family: "Vazir";
+  background: linear-gradient(
+    135deg,
+    #6caa3f,
+    #f9f9ff
+  ); /* Soft gradient background */
   background-size: 100vw 100vh;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -50,7 +57,7 @@ body {
 
 h1 {
   font-size: 2rem;
-  color: #4B4B4B; /* Dark gray text for the heading */
+  color: #4b4b4b; /* Dark gray text for the heading */
   font-weight: bold;
   line-height: 1.4;
   margin: 20px 0;
@@ -58,7 +65,7 @@ h1 {
 
 .message {
   font-size: 1.2rem;
-  color: #5C5C5C; /* Slightly lighter gray for message text */
+  color: #5c5c5c; /* Slightly lighter gray for message text */
   margin: 20px 0;
   line-height: 1.5;
 }
@@ -72,7 +79,7 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #F5F5F5; /* Subtle light gray background for the image container */
+  background-color: #f5f5f5; /* Subtle light gray background for the image container */
 }
 
 .random-image {
@@ -83,7 +90,7 @@ h1 {
 
 .location-text {
   font-size: 1.4rem;
-  color: #3C3C3C; /* Dark gray for location text */
+  color: #3c3c3c; /* Dark gray for location text */
   margin-bottom: 20px;
 }
 
@@ -96,7 +103,7 @@ h1 {
 }
 
 .btn-primary {
-  background-color: #4CAF50; /* Green color for Google Maps button */
+  background-color: #4caf50; /* Green color for Google Maps button */
   color: white;
 }
 
@@ -159,7 +166,7 @@ h1 {
   border: none;
 }
 
-@media (max-width: 576px) {
+@media (max-width: 640px) {
   /* Adjustments for small devices */
   .card {
     padding: 20px;
@@ -174,33 +181,35 @@ h1 {
     padding-left: 10px;
     padding-right: 10px;
   }
+  h1 {
+    font-size: 40px;
+  }
 }
-.mb-3{
-  font-size: min(30px,6vw) ;
+.mb-3 {
+  font-size: min(30px, 6vw);
   /* font-size: 2rem; */
 }
-h1{
-  font-size: min(60px,8vw) ;
+h1 {
+  font-size: 3rem;
   text-wrap-mode: nowrap;
   /* font-size: 7vw; */
   margin-bottom: 10px;
 }
-.mb-4{
+.mb-4 {
   font-weight: 500;
   /* font-size: 1.5rem; */
-  font-size: min(25px,4.6vw) ;
+  font-size: min(25px, 4.6vw);
   /* margin-bottom: 500px; */
   margin-top: 10px;
 }
-.btn-secondary{
+.btn-secondary {
   margin-top: 10px;
-  font-size: min(30px,6vw) ;
+  font-size: min(30px, 6vw);
 }
-.logo{
+.logo {
   margin: 0 auto;
 }
-.location-manual{
-  
+.location-manual {
   border: 2px solid green;
   border-radius: 8px;
   margin-bottom: 5px;
