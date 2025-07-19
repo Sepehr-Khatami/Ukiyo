@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@supabase/auth-js": "^2.71.1",
     "@supabase/supabase-js": "^2.49.4",
     "@tailwindcss/cli": "^4.1.11",
     "@tailwindcss/postcss": "^4.1.11",
