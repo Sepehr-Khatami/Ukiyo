@@ -1,4 +1,4 @@
-const { createClient } = require('@supabase/supabase-js');
+import { createClient } from '@supabase/supabase-js';
 
 // Retrieve Supabase URL and Service Role Key from environment variables
 const supabaseUrl = process.env.SUPABASE_URL;
@@ -18,7 +18,7 @@ const prizes = [
   { text: 'دسر رایگان برای خرید بالای 400 هزار تومان 🍰' }
 ];
 
-exports.handler = async (event) => {
+export async function handler(event) {
   if (event.httpMethod !== 'POST') {
     return {
       statusCode: 405,
@@ -86,4 +86,4 @@ exports.handler = async (event) => {
       body: JSON.stringify({ message: 'Server error. Try again later.' })
     };
   }
-};
+}
