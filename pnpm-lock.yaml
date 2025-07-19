@@ -15,7 +15,7 @@ importers:
         specifier: ^1.21.0
         version: 1.21.0
       '@supabase/supabase-js':
-        specifier: ^2.49.4
+        specifier: ^2.52.0
         version: 2.52.0
       '@tailwindcss/cli':
         specifier: ^4.1.11
